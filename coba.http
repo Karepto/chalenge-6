@@ -1,0 +1,10 @@
+PUT http://localhost:3000/api/v1/editImage/3
+Content-Type: application/json
+
+{
+  "judul": "ini rengga",
+  "deskripsi": "dia adalah seorang manusia"
+}
+
+###
+DELETE http://localhost:3000/api/v1/deleteImage/1
