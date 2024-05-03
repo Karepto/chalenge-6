@@ -1,0 +1,16 @@
+PUT https://exspressjs-production.up.railway.app/api/v1/editImage/10
+Content-Type: application/json
+
+{
+  "judul": "waduh",
+  "deskripsi": "dia adalah seorang manusia"
+}
+
+###
+DELETE https://exspressjs-production.up.railway.app/api/v1/deleteImage/1
+
+###
+GET https://exspressjs-production.up.railway.app/api/v1/showImage
+
+###
+GET https://exspressjs-production.up.railway.app/api/v1/detailImage/4
