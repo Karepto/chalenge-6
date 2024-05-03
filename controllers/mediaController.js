@@ -4,11 +4,11 @@ const path = require("path")
 
 const prisma = new PrismaClient();
 
-
+// || !req.file
 module.exports = {
     uploadImage: async (req, res, next) => {
         try {
-            if (!req.body.judul || !req.body.deskripsi || !req.file) {
+            if (!req.body.judul || !req.body.deskripsi) {
                 return res.json({
                     status: false,
                     message: 'Judul, deskripsi, dan file harus diisi'
