@@ -1,0 +1,37 @@
+name: Deploy to Railway Dev ENV
+
+on:
+  push:
+    branches:
+      - "dev"
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install nodeJS 18.x
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18.x
+
+      - name: Install Packages
+        run: npm install
+
+      - name: Install Railway CLI
+        run: npm install -g @railway/cli
+
+      - name: Install prisma
+        run: npm install prisma
+
+      - name: Run Migrations
+        run: |
+          export DATABASE_URL=${{ secrets.DEV_DATABASE_URL }}
+          npx prisma migrate dev
+
+      - name: Deploy to Railway
+        run: railway up --service ${{ secrets.RAILWAY_SERVICE_ID }}
+        env:
+          RAILWAY_TOKEN: ${{ secrets.RAILWAY_DEV_TOKEN }}
